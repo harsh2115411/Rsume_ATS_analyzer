@@ -12,6 +12,19 @@ Smart ATS is an **AI-driven Applicant Tracking System (ATS)** built with **Strea
 - **Profile Summary Generation** using Google Gemini AI
 - **Simple UI** built with **Streamlit**
 
+## 🛠 Requirements & Prerequisites
+### Prerequisites
+- **Python 3.8+** installed on your system
+- **Google Gemini API Key** (Required for AI-based features)
+- **pip** (Python package manager)
+- **Stable internet connection** for API requests
+
+### Required Python Libraries
+Ensure you have the following dependencies installed:
+```bash
+pip install streamlit google-generativeai PyPDF2 python-dotenv scikit-learn
+```
+
 ## 🛠 Installation
 1. Clone this repository:
    ```bash
@@ -38,6 +51,4 @@ Smart ATS is an **AI-driven Applicant Tracking System (ATS)** built with **Strea
 - **Experience & Role-Based Matching**: Consider candidate **experience level and job role alignment** rather than just keyword similarity.
 - **Resume Optimization Suggestions**: AI-powered suggestions to improve resume structure, formatting, and keyword density for better ATS compatibility.
 
-## 📧 Contact
-For queries or contributions, feel free to reach out! 😊
 
