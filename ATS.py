@@ -15,27 +15,27 @@ load_dotenv()
 # Configure Gemini API
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-# Extract text from PDF
+
 def input_pdf_text(uploaded_file):
     reader = pdf.PdfReader(uploaded_file)
     text = "".join(page.extract_text() or "" for page in reader.pages)
     return text  # Limit characters sent to AI
 
-# Calculate JD match using TF-IDF cosine similarity
-def calculate_jd_match(resume_text, jd_text):
+
+def calculate_jd_match(resume_text, jd_text): # calculate the ATS score using TF-IDF cosine similarity 
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform([resume_text, jd_text])
     similarity = cosine_similarity(tfidf_matrix[0], tfidf_matrix[1])[0][0]
     return round(similarity * 100, 2)
 
-# Extract missing skills from JD
+
 def find_missing_skills(resume_text, jd_text):
     jd_words = set(jd_text.lower().split())
     resume_words = set(resume_text.lower().split())
     return list(jd_words - resume_words)  # Direct set difference
 
 
-# Function to get response from Gemini
+
 def get_gemini_response(input):
     model = genai.GenerativeModel('gemini-pro')
     response = model.generate_content(input)
@@ -74,7 +74,7 @@ if submit:
         jd_match = calculate_jd_match(resume_text, jd)
         missing_skills = find_missing_skills(resume_text, jd)
         
-        # Improve profile summary generation to align with resume
+        
         input_prompt = f"""
         Hey, act as an expert ATS. Analyze the resume based on the given job description.
         Generate a detailed profile summary that accurately reflects the resume's content,
